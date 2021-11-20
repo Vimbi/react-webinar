@@ -10,7 +10,7 @@ let config = {
   // Директория с исходным кодом приложения
   context: path.join(__dirname, '/src'),
   // Главный файл приложения
-  entry: `index.js`,
+  entry: `index.tsx`,
   // Куда и как делать сборку
   output: {
     path: path.join(__dirname, 'dist'),
@@ -31,7 +31,7 @@ let config = {
   //
   resolve: {
     // Расширения по умолчанию, если не указаны в import
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx','.jsx', '.js'],
     // Где искать файлы подключаемых модулей, в том числе главный index.js
     modules: ['./', 'node_modules'],
   },
@@ -39,9 +39,18 @@ let config = {
     rules: [
       // Транспиляция JavaScript библиотекой babel
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x$/,
         exclude: /node_modules/,
-        use: [{loader: 'babel-loader'}],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['@babel/preset-env', {targets: {node: 'current'}}], '@babel/preset-react', "@babel/preset-typescript",
+              {
+                plugins: ['@babel/plugin-transform-runtime']
+              }
+            ]
+          }
+        },
       },
       // Возможность подключать css как модули, чтобы попали в сборку
       // С опцией modules при импорте стиля получаем объект с названиями ccs классов
