@@ -23,7 +23,7 @@ const ListPage = (): JSX.Element => {
           >
             <div className='Item' onClick={() => dispatch(selectItem(item.code))}>
               <div className='Item__number'>{item.code}</div>
-              <div className='Item__title'>{item.title} {item.count !== 0 && ` | ${item.count}`}</div>
+              <div className='Item__title'>{item.title} {item.count !== 0 && ` | Выделялся ${item.count} раз`}</div>
               <div className='Item__actions'>
                 <button onClick={() => dispatch(deleteItem(item.code))}>
                   Удалить
