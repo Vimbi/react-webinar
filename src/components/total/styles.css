@@ -1,0 +1,14 @@
+.Total{
+  display: flex;
+  justify-content: flex-end;
+}
+.Total__head,
+.Total__sum,
+.Total__count{
+  display: flex;
+  align-items: center;
+  width: auto;
+  white-space: nowrap;
+  padding: 20px 10px;
+  font-weight: 700;
+}

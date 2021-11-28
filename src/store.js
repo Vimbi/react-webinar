@@ -1,3 +1,5 @@
+import cart from "./components/cart";
+
 class Store {
   constructor(initState) {
     // Состояние приложения (данные)
@@ -54,6 +56,35 @@ class Store {
         title: 'Новая запись №'+code
       })
     });
+  }
+
+  switchCart() {
+    this.setState({
+      ...this.state,
+      isCartVisible: !this.state.isCartVisible
+    });
+  }
+
+  addItem(vendorCode) {
+    const serialNumber = Math.max(0, ...this.state.cart.map(item => item.code)) + 1;
+    const indexInItems = this.state.items.findIndex(item => item.vendorCode === vendorCode);
+    const indexInCart = this.state.cart.findIndex(item => item.vendorCode === vendorCode);
+
+    if (indexInCart !== -1) {
+      const newCart = [...this.state.cart];
+      newCart[indexInCart].count += 1;
+      this.setState({
+        ...this.state,
+        cart: newCart
+      });
+    } else {
+      const newItem = {...this.state.items[indexInItems], code: serialNumber, count: 1};
+      const newCart = [...this.state.cart, newItem];
+      this.setState({
+        ...this.state,
+        cart: newCart
+      });
+    }
   }
 
   /**
