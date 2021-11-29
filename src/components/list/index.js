@@ -4,15 +4,15 @@ import Item from "../item";
 import Total from '../total';
 import './styles.css';
 
-function List({items, onSelectItem, onAddItem}){
+function List({items, onSelectItem, onAddDelItem, cart}){
   console.log('List');
   return (
     <div className='List'>{items.map(item =>
       <div className='List__item' key={item.vendorCode}>
-        <Item item={item} onSelect={onSelectItem} onAdd={onAddItem} />
+        <Item item={item} onSelect={onSelectItem} onAddDel={onAddDelItem} />
       </div>
     )}
-      {items[0].count ? <Total items={items} /> : null}
+      {cart ? <Total items={items} /> : null}
     </div>
   )
 }
@@ -20,13 +20,14 @@ function List({items, onSelectItem, onAddItem}){
 List.propTypes = {
   items: propTypes.arrayOf(propTypes.object).isRequired,
   onSelectItem: propTypes.func,
-  onAddItem: propTypes.func
+  onAddDelItem: propTypes.func
 }
 
 List.defaultProps = {
   items: [],
-  onAddItem: () => {},
-  onSelectItem: () => {}
+  onAddDelItem: () => {},
+  onSelectItem: () => {},
+  cart: false,
 }
 
 export default React.memo(List);

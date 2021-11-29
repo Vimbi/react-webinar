@@ -1,14 +1,22 @@
 import React from "react";
 import propTypes from 'prop-types';
+import plural from 'plural-ru';
+import { sumCart, countCart } from "../utils/calculationCart";
 import './styles.css';
 
-function Controls({onSwitch}){
+function Controls({onSwitch, cart}){
   console.log('Controls');
+  
+  const sum = sumCart(cart);
+  const count = countCart(cart);
+
   return(
     <div className='Controls'>
       <div className='Controls__head'>В корзине:</div>
-      {/* TODO отображение ПУСТО если в корзине пусто, либо количество товаров с purl для склонения товар/товара и сумму через слэш */}
-      <button onClick={onSwitch}>Перейти</button>
+      <div className='Controls__total'>
+        {count ? `${count} ${plural(count, 'товар', 'товара', 'товаров')} / ${sum} ₽` : 'Пусто'}
+      </div>
+      <button onClick={onSwitch} className='Controls__button'>Перейти</button>
     </div>
   )
 }
@@ -18,7 +26,8 @@ Controls.propTypes = {
 }
 
 Controls.defaultProps = {
-  onSwitch: () => {}
+  onSwitch: () => {},
+  cart: []
 }
 
 export default React.memo(Controls);

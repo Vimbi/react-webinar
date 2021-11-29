@@ -13,11 +13,12 @@ function Cart({store}){
 
   return (
     <>
-      <div className='Cover'></div>
+      <div className='Cover' onClick={callbacks.onSwitchCart}></div>
       <CartLayout head={<h1>Корзина</h1>} onSwitch={callbacks.onSwitchCart}>
         <List items={store.getState().cart}
               onSelectItem={callbacks.onSelectItem}
-              onDeleteItem={callbacks.onDeleteItem}/>
+              onDeleteItem={callbacks.onDeleteItem}
+              cart={true}/>
       </CartLayout>
     </>
 

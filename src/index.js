@@ -18,9 +18,7 @@ const store = new Store({
     {code: 6, vendorCode: 6, title: 'Карандаши цветные', price: 111 },
     {code: 7, vendorCode: 7, title: 'Товар сюрприз', price: 0 }
   ],
-  cart: [
-    {code: 1, vendorCode: 1, title: 'Название товара', price: 100, count: 1 }
-  ],
+  cart: [],
   isCartVisible: false
 });
 

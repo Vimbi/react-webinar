@@ -2,7 +2,7 @@ import React, {useCallback, useState} from "react";
 import propTypes from 'prop-types';
 import './styles.css';
 
-function Item({item, onSelect, onAdd}){
+function Item({item, onSelect, onAddDel}){
   console.log('Item', item.title);
 
   const [counter, setCounter] = useState(0);
@@ -25,7 +25,7 @@ function Item({item, onSelect, onAdd}){
       <div className='Item__price'>{`${item.price} ₽`}</div>
       {item.count ? null :
         <div className='Item__actions'>
-          <button onClick={() => onAdd(item.vendorCode)}>
+          <button onClick={() => onAddDel(item.vendorCode)}>
             Добавить
           </button>
         </div>}
@@ -37,12 +37,13 @@ function Item({item, onSelect, onAdd}){
 Item.propTypes = {
   item: propTypes.object.isRequired,
   onSelect: propTypes.func.isRequired,
-  onAdd: propTypes.func.isRequired
+  onAddDel: propTypes.func.isRequired
 }
 
 Item.defaultProps = {
+  item: [],
   onSelect: () => {},
-  onAdd: () => {}
+  onAddDel: () => {}
 }
 
 export default React.memo(Item);

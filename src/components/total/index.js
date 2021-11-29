@@ -1,14 +1,11 @@
 import React from "react";
+import { sumCart, countCart } from "../utils/calculationCart";
 import './styles.css';
 
 function Total({items}) {
-  const sum = items.reduce((accum, curr) => {
-    return accum + (curr.price * curr.count)
-  }, 0);
 
-  const count = items.reduce((accum, curr) => {
-    return accum + curr.count
-  }, 0);
+  const sum = sumCart(items);
+  const count = countCart(items);
 
   return (
     <div className='Total'>

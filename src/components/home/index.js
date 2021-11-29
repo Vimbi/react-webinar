@@ -19,10 +19,10 @@ function Home({store}) {
   return (
     <>
       <Layout head={<h1>Магазин</h1>}>
-        <Controls onSwitch={callbacks.onSwitchCart}/>
+        <Controls onSwitch={callbacks.onSwitchCart} cart={store.getState().cart}/>
         <List items={store.getState().items}
               onSelectItem={callbacks.onSelectItem}
-              onAddItem={callbacks.onAddItem}/>
+              onAddDelItem={callbacks.onAddItem}/>
       </Layout>
     </>
   );
