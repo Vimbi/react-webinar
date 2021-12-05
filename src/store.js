@@ -53,7 +53,7 @@ class Store {
     this.setState({
       items: this.state.items.concat({
         code,
-        title: 'Новая запись №'+code
+        title: 'Новая запись №' + code
       })
     });
   }
@@ -71,14 +71,22 @@ class Store {
     const indexInCart = this.state.cart.findIndex(item => item.vendorCode === vendorCode);
 
     if (indexInCart !== -1) {
-      const newCart = [...this.state.cart];
-      newCart[indexInCart].count += 1;
+      const newCart = this.state.cart.map(element => {
+        if (element.vendorCode === vendorCode) {
+          element.count += 1
+        }
+        return element;
+      })
       this.setState({
         ...this.state,
         cart: newCart
       });
     } else {
-      const newItem = {...this.state.items[indexInItems], code: serialNumber, count: 1};
+      const newItem = {
+        ...this.state.items[indexInItems],
+        code: serialNumber,
+        count: 1
+      };
       const newCart = [...this.state.cart, newItem];
       this.setState({
         ...this.state,
@@ -104,7 +112,7 @@ class Store {
   selectItem(code) {
     this.setState({
       items: this.state.items.map(item => {
-        if (item.code === code){
+        if (item.code === code) {
           return {
             ...item,
             selected: !item.selected

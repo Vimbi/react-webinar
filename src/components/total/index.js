@@ -1,5 +1,5 @@
 import React from "react";
-import { sumCart, countCart } from "../utils/calculationCart";
+import { sumCart, countCart } from "../utils/calculation-cart";
 import './styles.css';
 
 function Total({items}) {

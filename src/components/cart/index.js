@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import CartLayout from '../cartLayout';
+import CartLayout from '../cart-layout';
 import List from '../list';
 import './style.css';
 

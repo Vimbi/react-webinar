@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from 'prop-types';
 import plural from 'plural-ru';
-import { sumCart, countCart } from "../utils/calculationCart";
+import { sumCart, countCart } from "../utils/calculation-cart";
 import './styles.css';
 
 function Controls({onSwitch, cart}){
