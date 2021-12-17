@@ -7,10 +7,13 @@
 }
 
 .BasketSimple__label{
-
 }
 
 .BasketSimple__total{
     font-weight: bold;
     margin: 0 15px;
+}
+
+.BasketSimple__navlink {
+  margin-right: auto;
 }

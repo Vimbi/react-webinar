@@ -13,7 +13,7 @@ const store = new Store(modules);
 // Сообщаем реакту что и куда рендерить.
 ReactDOM.render(
   <StoreProvider store={store}>
-    <App/>
+    <App />
   </StoreProvider>,
   root
 );

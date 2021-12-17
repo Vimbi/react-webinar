@@ -18,6 +18,10 @@
     padding: 20px 10px;
 }
 
+.Item__title:hover {
+  background-color: #f5f5f5;
+}
+
 .Item__right {
     padding: 20px 20px 20px 10px;
     display: flex;
