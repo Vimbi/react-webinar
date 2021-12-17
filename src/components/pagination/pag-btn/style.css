@@ -10,6 +10,7 @@
 
 .Pagination__button:hover {
   background-color: #E1E1E1;
+  cursor: pointer;
 }
 
 .Pagination__button-active {
